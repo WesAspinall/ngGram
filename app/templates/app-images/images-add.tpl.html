@@ -1,9 +1,8 @@
 
 <div class="formContainer">
-  <form>
-    <input placeholder="url">
-    <input placeholder="title">
-    <textarea rows="5" cols="25" placeholder="enter description..."></textarea>
+  <form ng-submit= "vm.addImage(image)">
+    <input placeholder="url" ng-model="image.url">
+    <input placeholder="title" ng-model="image.title">
     <button class="submit">submit</button>
   </form>
 <div>

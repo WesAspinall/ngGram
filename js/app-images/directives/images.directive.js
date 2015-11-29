@@ -6,15 +6,18 @@ let wesImage = function ( ImagesService){
       scope: {
         img: '='
       },
+
       template:`
-      <div class="imageContainer">
-       <img ng-src="{{ img.url }}">
-       <span>{{img.title}}</span>
-      </div>
+        <div class="imageContainer">
+         <img ng-src="{{ img.url }}">
+         <div class="title">{{img.title}}</div>
+        </div>
       `,
 
-      link: function(s,e,a){
-
+      link: function(scope,element,attribute) {
+        element.on('click', function (){
+          console.log('hi');
+        });
       }
 
     };

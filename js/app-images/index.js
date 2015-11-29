@@ -3,7 +3,6 @@ import '../app-core/index';
 
 
 //import controllers
-import ImagesController from './controllers/images.controller';
 import AddImageController from './controllers/addImage.controller';
 
 //import services
@@ -14,7 +13,6 @@ import wesImage from './directives/images.directive';
 
 angular
   .module('app.images', ['app.core'])
-  .controller('ImagesController', ImagesController)
   .controller('AddImageController', AddImageController)
   .service('ImagesService', ImagesService)
   .directive('wesImage', wesImage)

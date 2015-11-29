@@ -1,4 +1,4 @@
-let HomeController = function(PARSE, ImagesService) {
+let HomeController = function(ImagesService) {
 
   let vm = this;
   
@@ -13,14 +13,14 @@ let HomeController = function(PARSE, ImagesService) {
   function getImages (obj){
     ImagesService.getImages(obj).then( (res) => {
 
-
       vm.img = res.data.results;
       console.log(vm.img);
+
     });
 
   }
 };
 
-HomeController.$inject = ['PARSE', 'ImagesService'];
+HomeController.$inject = ['ImagesService'];
 
 export default HomeController;

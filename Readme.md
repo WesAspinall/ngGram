@@ -1,5 +1,5 @@
 <i class="fa fa-globe" align="right"></i>
-# Awesome README [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome README [![Awesome](http://www.oystermag.com/sites/default/files/imagecache/article-image-650x580/images/kanye_head_photo.png)](https://github.com/sindresorhus/awesome)
 > A curated list of awesome README
 
 Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.

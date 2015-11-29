@@ -1,5 +1,7 @@
-<i class="fa fa-globe" align="right"></i>
-# Awesome README [![Awesome](https://33.media.tumblr.com/avatar_e3b30a50adad_128.png)](https://github.com/sindresorhus/awesome)
+
+# Awesome README 
+[![Awesome](https://media.giphy.com/media/SJnN3PZ9NYqs/giphy.gif)](https://github.com/sindresorhus/awesome)
+
 > A curated list of awesome README
 
 Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.

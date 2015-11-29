@@ -34,7 +34,7 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports['default'] = {
-  URL: 'https://api.parse.com/1/classes/ngGram',
+  URL: 'https://api.parse.com/1/',
   CONFIG: {
     headers: {
       'X-Parse-Application-Id': '49GUebXgybdjN3ruwD3TfvWsBuVyWbO7nFSPVQKZ',
@@ -65,7 +65,7 @@ var _constantsParseConstant2 = _interopRequireDefault(_constantsParseConstant);
 
 _angular2['default'].module('app.core', ['ui.router']).config(_config2['default']).constant('PARSE', _constantsParseConstant2['default']);
 
-},{"./config":1,"./constants/parse.constant":2,"angular":12,"angular-ui-router":10}],4:[function(require,module,exports){
+},{"./config":1,"./constants/parse.constant":2,"angular":14,"angular-ui-router":12}],4:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -79,30 +79,42 @@ exports["default"] = AddImageController;
 module.exports = exports["default"];
 
 },{}],5:[function(require,module,exports){
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var ImagesController = function ImagesController() {};
+var ImagesController = function ImagesController(ImagesService) {};
 
-ImagesController.$inject = [];
+ImagesController.$inject = ['ImagesService'];
 
-exports["default"] = ImagesController;
-module.exports = exports["default"];
+exports['default'] = ImagesController;
+module.exports = exports['default'];
 
 },{}],6:[function(require,module,exports){
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
+Object.defineProperty(exports, '__esModule', {
+  value: true
 });
-function wesImage() {
-    return {};
-}
+var wesImage = function wesImage(ImagesService) {
+  return {
 
-exports["default"] = wesImage;
-module.exports = exports["default"];
+    restrict: 'E',
+    replace: true,
+    scope: {
+      img: '='
+    },
+    template: '\n      <div class="imageContainer">\n       <img ng-src="{{ img.url }}">\n       <span>{{img.title}}</span>\n      </div>\n      ',
+
+    link: function link(s, e, a) {}
+
+  };
+};
+
+wesImage.$inject = ['ImagesService'];
+exports['default'] = wesImage;
+module.exports = exports['default'];
 
 },{}],7:[function(require,module,exports){
 'use strict';
@@ -139,20 +151,67 @@ var _directivesImagesDirective2 = _interopRequireDefault(_directivesImagesDirect
 
 _angular2['default'].module('app.images', ['app.core']).controller('ImagesController', _controllersImagesController2['default']).controller('AddImageController', _controllersAddImageController2['default']).service('ImagesService', _servicesImagesService2['default']).directive('wesImage', _directivesImagesDirective2['default']);
 
-},{"../app-core/index":3,"./controllers/addImage.controller":4,"./controllers/images.controller":5,"./directives/images.directive":6,"./services/images.service":8,"angular":12}],8:[function(require,module,exports){
-"use strict";
+},{"../app-core/index":3,"./controllers/addImage.controller":4,"./controllers/images.controller":5,"./directives/images.directive":6,"./services/images.service":8,"angular":14}],8:[function(require,module,exports){
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var ImagesService = function ImagesService() {};
+var ImagesService = function ImagesService($http, PARSE) {
 
-ImagesService.$inject = [];
+  var url = PARSE.URL + 'classes/images';
 
-exports["default"] = ImagesService;
-module.exports = exports["default"];
+  this.getImages = getImages;
+
+  function Image(obj) {
+    this.url = obj.url;
+    this.title = obj.title;
+    this.description = obj.description;
+  }
+
+  function getImages() {
+    return $http.get(url, PARSE.CONFIG);
+  }
+};
+
+ImagesService.$inject = ['$http', 'PARSE'];
+
+exports['default'] = ImagesService;
+module.exports = exports['default'];
 
 },{}],9:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var HomeController = function HomeController(PARSE, ImagesService) {
+
+  var vm = this;
+
+  vm.title = 'ngGram';
+
+  vm.getImages = getImages;
+
+  vm.img = [];
+
+  getImages();
+
+  function getImages(obj) {
+    ImagesService.getImages(obj).then(function (res) {
+
+      vm.img = res.data.results;
+      console.log(vm.img);
+    });
+  }
+};
+
+HomeController.$inject = ['PARSE', 'ImagesService'];
+
+exports['default'] = HomeController;
+module.exports = exports['default'];
+
+},{}],10:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -161,15 +220,32 @@ var _angular = require('angular');
 
 var _angular2 = _interopRequireDefault(_angular);
 
-//sub-modules
+var _controllersHomeController = require('./controllers/home.controller');
+
+var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
+
+_angular2['default'].module('app.layout', []).controller('HomeController', _controllersHomeController2['default']);
+
+},{"./controllers/home.controller":9,"angular":14}],11:[function(require,module,exports){
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _angular = require('angular');
+
+var _angular2 = _interopRequireDefault(_angular);
+
+// import sub-modules
 
 require('./app-core/index');
 
+require('./app-layout/index');
+
 require('./app-images/index');
 
-_angular2['default'].module('app', ['app.core', 'app.images']);
+_angular2['default'].module('app', ['app.core', 'app.layout', 'app.images']);
 
-},{"./app-core/index":3,"./app-images/index":7,"angular":12}],10:[function(require,module,exports){
+},{"./app-core/index":3,"./app-images/index":7,"./app-layout/index":10,"angular":14}],12:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4540,7 +4616,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],11:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33559,11 +33635,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],12:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":11}]},{},[9])
+},{"./angular":13}]},{},[11])
 
 
 //# sourceMappingURL=main.js.map

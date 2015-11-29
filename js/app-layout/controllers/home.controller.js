@@ -1,13 +1,26 @@
-let HomeController = function(PARSE) {
-
-  console.log(PARSE);
+let HomeController = function(PARSE, ImagesService) {
 
   let vm = this;
   
-  vm.title = 'Home Page';
+  vm.title = 'ngGram';
 
+  vm.getImages = getImages;
+
+  vm.img = [];
+
+  getImages();
+
+  function getImages (obj){
+    ImagesService.getImages(obj).then( (res) => {
+
+
+      vm.img = res.data.results;
+      console.log(vm.img);
+    });
+
+  }
 };
 
-HomeController.$inject = ['PARSE'];
+HomeController.$inject = ['PARSE', 'ImagesService'];
 
 export default HomeController;

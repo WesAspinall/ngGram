@@ -1,9 +1,8 @@
-let ImagesController = function() {
-  
-  
+let ImagesController = function(ImagesService) {
+
 
 };
 
-ImagesController.$inject = [];
+ImagesController.$inject = ['ImagesService'];
 
 export default ImagesController;

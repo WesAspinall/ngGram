@@ -1,8 +1,8 @@
 import angular from 'angular';
 
-
-
+//sub-modules
+import './app-core/index';
 
 angular
-.module('app',[])
+.module('app',['app.core'])
 ;

@@ -14,7 +14,7 @@ let config = function($stateProvider, $urlRouterProvider) {
     })
     .state('root.addImage', {
       url: '/images/add',
-      controller: 'AddImagesController as vm',
+      controller: 'AddImageController as vm',
       templateUrl: 'templates/app-images/images-add.tpl.html'
     });
 };

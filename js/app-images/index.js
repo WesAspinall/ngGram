@@ -13,5 +13,9 @@ import ImagesService from './services/images.service';
 import wesImage from './directives/images.directive';
 
 angular
-  .module('app.cars', ['app.core'])
+  .module('app.images', ['app.core'])
+  .controller('ImagesController', ImagesController)
+  .controller('AddImageController', AddImageController)
+  .service('ImagesService', ImagesService)
+  .directive('wesImage', wesImage)
 ;

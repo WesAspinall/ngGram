@@ -4,5 +4,18 @@
 @import 'foundation';
 
 body {
-  background: #e2ebf3;
+  font-family: 'courier';
 }
+
+.formContainer{
+  width: 500px;
+  margin: 5% auto;
+}
+
+.submit{
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    font-family: 'courier';
+    border: 1px solid black;
+  }

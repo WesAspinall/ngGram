@@ -1,9 +1,9 @@
-let ImagesService = function($http, PARSE) {
+let ImagesService = function() {
   
   
 
 };
 
-ImagesService.$inject = [''];
+ImagesService.$inject = [];
 
 export default ImagesService;

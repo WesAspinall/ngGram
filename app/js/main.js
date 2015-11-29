@@ -17,7 +17,7 @@ var config = function config($stateProvider, $urlRouterProvider) {
     templateUrl: 'templates/app-layout/home.tpl.html'
   }).state('root.addImage', {
     url: '/images/add',
-    controller: 'AddImagesController as vm',
+    controller: 'AddImageController as vm',
     templateUrl: 'templates/app-images/images-add.tpl.html'
   });
 };
@@ -137,20 +137,20 @@ var _directivesImagesDirective = require('./directives/images.directive');
 
 var _directivesImagesDirective2 = _interopRequireDefault(_directivesImagesDirective);
 
-_angular2['default'].module('app.cars', ['app.core']);
+_angular2['default'].module('app.images', ['app.core']).controller('ImagesController', _controllersImagesController2['default']).controller('AddImageController', _controllersAddImageController2['default']).service('ImagesService', _servicesImagesService2['default']).directive('wesImage', _directivesImagesDirective2['default']);
 
 },{"../app-core/index":3,"./controllers/addImage.controller":4,"./controllers/images.controller":5,"./directives/images.directive":6,"./services/images.service":8,"angular":12}],8:[function(require,module,exports){
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var ImagesService = function ImagesService($http, PARSE) {};
+var ImagesService = function ImagesService() {};
 
-ImagesService.$inject = [''];
+ImagesService.$inject = [];
 
-exports['default'] = ImagesService;
-module.exports = exports['default'];
+exports["default"] = ImagesService;
+module.exports = exports["default"];
 
 },{}],9:[function(require,module,exports){
 'use strict';

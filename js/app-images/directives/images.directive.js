@@ -23,7 +23,6 @@ let wesImage = function (ImagesService, $animate){
         });
         element.on('mouseup', function(){
           element.find('heart').addClass('hide');
-
         });
   
       }

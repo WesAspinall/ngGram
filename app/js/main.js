@@ -99,20 +99,22 @@ Object.defineProperty(exports, '__esModule', {
 var wesImage = function wesImage(ImagesService) {
   return {
 
-    restrict: 'E',
+    restrict: 'EAC',
     replace: true,
     scope: {
       img: '='
     },
 
-    template: '\n        <div class="imageContainer">\n         <img ng-src="{{ img.url }}">\n         <div class="title">{{img.title}}</div>\n        </div>\n      ',
+    template: '\n        <div class="imageContainer">\n         <img ng-src="{{ img.url }}">\n           <div class="title">\n             {{img.title}}\n           </div>\n        </div>\n      ',
 
-    link: function link(scope, element, attribute) {
-      element.on('click', function () {
-        console.log('hi');
+    link: function link(scope, element, attribue) {
+      element.on('mousedown', function () {
+        console.log('hello');
+      });
+      element.on('mouseup', function () {
+        console.log('world');
       });
     }
-
   };
 };
 
@@ -191,12 +193,11 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var HomeController = function HomeController(ImagesService) {
+var HomeController = function HomeController(PARSE, ImagesService, $state) {
 
   var vm = this;
 
   vm.title = 'ngGram';
-
   vm.getImages = getImages;
 
   vm.img = [];
@@ -212,7 +213,7 @@ var HomeController = function HomeController(ImagesService) {
   }
 };
 
-HomeController.$inject = ['ImagesService'];
+HomeController.$inject = ['PARSE', 'ImagesService', '$state'];
 
 exports['default'] = HomeController;
 module.exports = exports['default'];

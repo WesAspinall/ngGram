@@ -20,7 +20,6 @@ let ImagesService = function($http, PARSE) {
     return $http.post(url, i, PARSE.CONFIG);
   }
 
-
 };
 
 ImagesService.$inject = ['$http', 'PARSE'];

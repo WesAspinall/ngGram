@@ -2028,7 +2028,10 @@ body {
   max-width: 68em;
   margin-left: auto;
   margin-right: auto;
-  font-family: 'courier'; }
+  font-family: 'courier';
+  background-position: center;
+  background-repeat: no-repeat;
+  background: -webkit-linear-gradient(top, #25ba83 0%, rgba(128, 237, 233, 0.67) 17%, rgba(128, 237, 233, 0) 52%); }
   body::after {
     clear: both;
     content: "";
@@ -2044,6 +2047,21 @@ body {
     content: "";
     display: table; }
 
+header a {
+  text-decoration: none;
+  color: black; }
+
+header .ngGram {
+  text-align: center;
+  list-style: none;
+  margin: 0 40%;
+  display: inline-block; }
+
+header .addPhoto a {
+  float: right;
+  text-decoration: none;
+  color: black; }
+
 .imageContainer {
   float: left;
   display: block;
@@ -2056,11 +2074,30 @@ body {
   .imageContainer:nth-child(4n+1) {
     clear: left; }
   .imageContainer img {
+    top: 0;
     width: 250px;
-    height: 250px; }
+    height: 250px;
+    box-shadow: 1px 1px 5px grey; }
   .imageContainer .title {
     font-style: italic;
     color: #A4A5A9; }
+  .imageContainer .hide {
+    float: right;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 20px;
+    width: 100px; }
+  .imageContainer .show {
+    float: right;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 20px;
+    background-image: url(http://charitydateauction.org/wp-content/themes/infowaytheme/images/Heart.png);
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position: right;
+    transition: all 1s ease;
+    width: 100px; }
 
 .formContainer {
   width: 500px;

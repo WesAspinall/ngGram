@@ -1,7 +1,7 @@
 let wesImage = function ( ImagesService){
     return {
 
-      restrict: 'E',
+      restrict: 'EAC',
       replace: true,
       scope: {
         img: '='
@@ -10,16 +10,21 @@ let wesImage = function ( ImagesService){
       template:`
         <div class="imageContainer">
          <img ng-src="{{ img.url }}">
-         <div class="title">{{img.title}}</div>
+           <div class="title">
+             {{img.title}}
+           </div>
         </div>
       `,
 
-      link: function(scope,element,attribute) {
-        element.on('click', function (){
-          console.log('hi');
+      link: function(scope,element,attribue) {
+        element.on('mousedown', function (){
+          console.log('hello');
+        });
+        element.on('mouseup', function(){
+          console.log('world');
+
         });
       }
-
     };
   };
 

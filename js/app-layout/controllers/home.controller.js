@@ -1,9 +1,8 @@
-let HomeController = function(ImagesService) {
+let HomeController = function(PARSE, ImagesService, $state) {
 
   let vm = this;
   
   vm.title = 'ngGram';
-
   vm.getImages = getImages;
 
   vm.img = [];
@@ -21,6 +20,6 @@ let HomeController = function(ImagesService) {
   }
 };
 
-HomeController.$inject = ['ImagesService'];
+HomeController.$inject = ['PARSE', 'ImagesService', '$state'];
 
 export default HomeController;

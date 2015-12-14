@@ -1,4 +1,4 @@
-let wesImage = function ( ImagesService){
+let wesImage = function (ImagesService, $animate){
     return {
 
       restrict: 'EAC',
@@ -9,6 +9,7 @@ let wesImage = function ( ImagesService){
 
       template:`
         <div class="imageContainer">
+        <heart class="hide"><img class="heart" ng-src ="http://rs1225.pbsrc.com/albums/ee389/sammiehollis/Decorated%20images/TransparentHeart.png~c200"></heart>
          <img ng-src="{{ img.url }}">
            <div class="title">
              {{img.title}}
@@ -16,17 +17,18 @@ let wesImage = function ( ImagesService){
         </div>
       `,
 
-      link: function(scope,element,attribue) {
+      link: function(scope,element,attribute) {
         element.on('mousedown', function (){
-          console.log('hello');
+          element.find('heart').removeClass('hide');
         });
         element.on('mouseup', function(){
-          console.log('world');
+          element.find('heart').addClass('hide');
 
         });
+  
       }
     };
   };
 
-wesImage.$inject = ['ImagesService'];
+wesImage.$inject = ['ImagesService', '$animate'];
 export default wesImage;

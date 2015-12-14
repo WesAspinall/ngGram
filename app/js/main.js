@@ -96,7 +96,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var wesImage = function wesImage(ImagesService) {
+var wesImage = function wesImage(ImagesService, $animate) {
   return {
 
     restrict: 'EAC',
@@ -105,20 +105,20 @@ var wesImage = function wesImage(ImagesService) {
       img: '='
     },
 
-    template: '\n        <div class="imageContainer">\n         <img ng-src="{{ img.url }}">\n           <div class="title">\n             {{img.title}}\n           </div>\n        </div>\n      ',
+    template: '\n        <div class="imageContainer">\n        <heart class="hide"><img class="heart" ng-src ="http://rs1225.pbsrc.com/albums/ee389/sammiehollis/Decorated%20images/TransparentHeart.png~c200"></heart>\n         <img ng-src="{{ img.url }}">\n           <div class="title">\n             {{img.title}}\n           </div>\n        </div>\n      ',
 
-    link: function link(scope, element, attribue) {
+    link: function link(scope, element, attribute) {
       element.on('mousedown', function () {
-        console.log('hello');
+        element.find('heart').removeClass('hide');
       });
       element.on('mouseup', function () {
-        console.log('world');
+        element.find('heart').addClass('hide');
       });
     }
   };
 };
 
-wesImage.$inject = ['ImagesService'];
+wesImage.$inject = ['ImagesService', '$animate'];
 exports['default'] = wesImage;
 module.exports = exports['default'];
 

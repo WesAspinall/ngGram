@@ -2063,6 +2063,7 @@ header .addPhoto a {
   color: black; }
 
 .imageContainer {
+  position: relative;
   float: left;
   display: block;
   margin-right: 2.35765%;
@@ -2078,26 +2079,16 @@ header .addPhoto a {
     width: 250px;
     height: 250px;
     box-shadow: 1px 1px 5px grey; }
+  .imageContainer .heart {
+    position: absolute; }
+  .imageContainer .hide {
+    visibility: hidden; }
   .imageContainer .title {
     font-style: italic;
     color: #A4A5A9; }
-  .imageContainer .hide {
-    float: right;
-    background-color: white;
-    border: 1px solid grey;
-    border-radius: 20px;
-    width: 100px; }
-  .imageContainer .show {
-    float: right;
-    background-color: white;
-    border: 1px solid grey;
-    border-radius: 20px;
-    background-image: url(http://charitydateauction.org/wp-content/themes/infowaytheme/images/Heart.png);
-    background-size: 20%;
-    background-repeat: no-repeat;
-    background-position: right;
-    transition: all 1s ease;
-    width: 100px; }
+
+heart {
+  transition: all 1s ease-in-out; }
 
 .formContainer {
   width: 500px;

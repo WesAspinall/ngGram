@@ -96,7 +96,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var wesImage = function wesImage(ImagesService, $animate) {
+var wesImage = function wesImage(ImagesService) {
   return {
 
     restrict: 'EAC',
@@ -105,7 +105,9 @@ var wesImage = function wesImage(ImagesService, $animate) {
       img: '='
     },
 
-    template: '\n        <div class="imageContainer">\n        <heart class="hide"><img class="heart" ng-src ="http://rs1225.pbsrc.com/albums/ee389/sammiehollis/Decorated%20images/TransparentHeart.png~c200"></heart>\n         <img ng-src="{{ img.url }}">\n           <div class="title">\n             {{img.title}}\n           </div>\n        </div>\n      ',
+    template: '\n        <div class="imageContainer" ng-click="vm.addLikes()">\n        <heart class="hide"><img class="heart" ng-src ="http://rs1225.pbsrc.com/albums/ee389/sammiehollis/Decorated%20images/TransparentHeart.png~c200"></heart>\n         <img ng-src="{{ img.url }}">\n           <div class="title">\n             {{img.title}}\n           </div>\n           <div class="likes">\n              {{vm.count}} {{vm.word}}\n           </div>\n        </div>\n      ',
+
+    controller: 'HomeController as vm',
 
     link: function link(scope, element, attribute) {
       element.on('mousedown', function () {
@@ -118,7 +120,7 @@ var wesImage = function wesImage(ImagesService, $animate) {
   };
 };
 
-wesImage.$inject = ['ImagesService', '$animate'];
+wesImage.$inject = ['ImagesService'];
 exports['default'] = wesImage;
 module.exports = exports['default'];
 
@@ -199,8 +201,20 @@ var HomeController = function HomeController(PARSE, ImagesService, $state) {
 
   vm.title = 'ngGram';
   vm.getImages = getImages;
-
+  vm.addLikes = addLikes;
   vm.img = [];
+
+  vm.word = 'likes';
+  vm.count = 0;
+
+  function addLikes() {
+    vm.count = vm.count + 1;
+    if (vm.count === 1) {
+      vm.word = 'like';
+    } else {
+      vm.word = 'likes';
+    }
+  }
 
   getImages();
 

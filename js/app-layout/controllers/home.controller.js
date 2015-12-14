@@ -4,8 +4,24 @@ let HomeController = function(PARSE, ImagesService, $state) {
   
   vm.title = 'ngGram';
   vm.getImages = getImages;
-
+  vm.addLikes = addLikes;
   vm.img = [];
+
+  vm.word = 'likes';
+  vm.count = 0;
+
+
+  function addLikes(){
+    vm.count = vm.count + 1;
+    if(vm.count === 1){
+      vm.word = 'like';
+    } else {
+      vm.word = 'likes';
+    }
+  }
+
+
+
 
   getImages();
 

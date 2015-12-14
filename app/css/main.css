@@ -2086,10 +2086,15 @@ header .addPhoto a {
     visibility: hidden; }
   .imageContainer .title {
     font-style: italic;
-    color: #A4A5A9; }
+    color: #A4A5A9;
+    display: inline-block; }
 
 heart {
   transition: all 1s ease-in-out; }
+
+.likes {
+  float: right;
+  color: #A4A5A9; }
 
 .formContainer {
   width: 500px;

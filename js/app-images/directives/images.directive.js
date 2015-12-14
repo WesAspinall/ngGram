@@ -1,4 +1,4 @@
-let wesImage = function (ImagesService, $animate){
+let wesImage = function (ImagesService){
     return {
 
       restrict: 'EAC',
@@ -8,14 +8,19 @@ let wesImage = function (ImagesService, $animate){
       },
 
       template:`
-        <div class="imageContainer">
+        <div class="imageContainer" ng-click="vm.addLikes()">
         <heart class="hide"><img class="heart" ng-src ="http://rs1225.pbsrc.com/albums/ee389/sammiehollis/Decorated%20images/TransparentHeart.png~c200"></heart>
          <img ng-src="{{ img.url }}">
            <div class="title">
              {{img.title}}
            </div>
+           <div class="likes">
+              {{vm.count}} {{vm.word}}
+           </div>
         </div>
       `,
+
+      controller: 'HomeController as vm',
 
       link: function(scope,element,attribute) {
         element.on('mousedown', function (){
@@ -29,5 +34,5 @@ let wesImage = function (ImagesService, $animate){
     };
   };
 
-wesImage.$inject = ['ImagesService', '$animate'];
+wesImage.$inject = ['ImagesService'];
 export default wesImage;
